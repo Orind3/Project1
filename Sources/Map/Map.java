@@ -1,4 +1,4 @@
-package Map;
+package Sources.Map;
 import java.awt.image.*;
 
 import javax.imageio.ImageIO;

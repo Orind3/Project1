@@ -1,4 +1,4 @@
-package Map;
+package Sources.Map;
 
 import java.util.Vector;
 

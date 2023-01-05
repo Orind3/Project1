@@ -1,10 +1,10 @@
-package GameState;
+package Sources.GameState;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import Map.Map;
 import java.awt.BasicStroke;
 import Sources.GamePanel;
+import Sources.Map.Map;
 import Sources.Tool.KeyHandler;
 import java.awt.image.*;
 

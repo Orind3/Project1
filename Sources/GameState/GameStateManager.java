@@ -1,4 +1,4 @@
-package GameState;
+package Sources.GameState;
 
 import java.util.Vector;
 import Sources.GamePanel;

@@ -4,8 +4,8 @@ import java.awt.Dimension;
 import java.awt.*;
 import javax.swing.JPanel;
 
-import GameState.GameStateManager;
-import Map.MapManager;
+import Sources.GameState.GameStateManager;
+import Sources.Map.MapManager;
 import Sources.Tool.KeyHandler;
 
 public class GamePanel extends JPanel implements Runnable {

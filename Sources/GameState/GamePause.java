@@ -1,12 +1,11 @@
-package GameState;
+package Sources.GameState;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.BasicStroke;
 import Sources.GamePanel;
+import Sources.Map.Map;
 import Sources.Tool.KeyHandler;
 import java.awt.event.*;
-
-import Map.Map;
 public class GamePause extends GameState {
     private int counter;
     private int choice;

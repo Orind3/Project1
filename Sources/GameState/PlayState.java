@@ -1,13 +1,14 @@
-package GameState;
+package Sources.GameState;
 
 import java.awt.Graphics2D;
 import java.util.Vector;
 import java.awt.event.*;
-import Map.Map;
+
 import Sources.GamePanel;
 import Sources.Entity.Crystal;
 import Sources.Entity.Entity;
 import Sources.Entity.Player;
+import Sources.Map.Map;
 import Sources.Render.MapRender;
 import Sources.Render.PlayerRender;
 import Sources.Tool.KeyHandler;

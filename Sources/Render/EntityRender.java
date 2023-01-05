@@ -1,8 +1,9 @@
 package Sources.Render;
 import java.awt.image.*;
 
-import GameState.PlayState;
 import Sources.Entity.Entity;
+import Sources.GameState.PlayState;
+
 import java.awt.Graphics2D;
 
 public class EntityRender extends Render {

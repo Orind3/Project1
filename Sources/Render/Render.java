@@ -1,7 +1,7 @@
 package Sources.Render;
 import java.awt.*;
 
-import GameState.PlayState;
+import Sources.GameState.PlayState;
 
 public class Render {
     private PlayState playState;

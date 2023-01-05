@@ -1,11 +1,11 @@
-package GameState;
+package Sources.GameState;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import Sources.GamePanel;
+import Sources.Map.Map;
 import Sources.Tool.KeyHandler;
 import java.awt.event.*;
 import java.awt.BasicStroke;
-import Map.Map;
 
 public class WinningState extends GameState {
         private int counter;

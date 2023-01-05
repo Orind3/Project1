@@ -2,7 +2,8 @@ package Sources.Render;
 import java.awt.Graphics2D;
 import java.awt.image.*;
 import java.util.Vector;
-import GameState.PlayState;
+
+import Sources.GameState.PlayState;
 import Sources.Tool.Load;
 
 public class PlayerRender extends Render {

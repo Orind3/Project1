@@ -1,4 +1,4 @@
-package GameState;
+package Sources.GameState;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import javax.imageio.ImageIO;

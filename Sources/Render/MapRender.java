@@ -3,8 +3,8 @@ package Sources.Render;
 import java.awt.image.*;
 import java.util.Vector;
 
-import GameState.PlayState;
 import Sources.Entity.Entity;
+import Sources.GameState.PlayState;
 import Sources.Tool.Load;
 import java.awt.Graphics2D;
 

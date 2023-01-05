@@ -1,4 +1,4 @@
-package GameState;
+package Sources.GameState;
 
 import Sources.GamePanel;
 import Sources.Tool.KeyHandler;
