@@ -67,7 +67,8 @@ public class GameMenu extends GameState {
                     this.getGamepanel().getGamestatemanager().addState( new MapSelection(this.getGamepanel()));
                 }
                 if(this.choice==3){
-                    
+                    this.getGamepanel().setGamethread(null);
+                    System.exit(1);
                 }
             }
             else{
@@ -82,7 +83,8 @@ public class GameMenu extends GameState {
                         this.getGamepanel().getGamestatemanager().addState( new MapSelection(this.getGamepanel()));
                     }
                     if(this.choice==3){
-        
+                        this.getGamepanel().setGamethread(null);
+                        System.exit(1);
                     }
                 }
             }

@@ -81,7 +81,7 @@ public class PlayState extends GameState{
             ((Crystal) entity).pullTheBox(entities);
         }
         if(checkWinning()){
-            System.out.println("Winning");
+            this.getGamepanel().getGamestatemanager().addState(new WinningState(this.getGamepanel()));
         }
     }
     public Map getMap() {

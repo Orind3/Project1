@@ -1,7 +1,7 @@
 package GameState;
 import java.awt.Color;
 import java.awt.Graphics2D;
-
+import java.awt.BasicStroke;
 import Sources.GamePanel;
 import Sources.Tool.KeyHandler;
 import java.awt.event.*;
@@ -118,16 +118,18 @@ public class GamePause extends GameState {
         g.setColor(new Color(255,255,255,100));
         g.fillRect(0, 0, 2000, 2000);
         g.setFont(GameStateManager.font_bong);
-        g.setColor(Color.red);
-        g.setFont(g.getFont().deriveFont(30F));
+        g.setColor(new Color(51,0,102,255));
+        g.setFont(g.getFont().deriveFont(50F));
         g.drawString("GamePause",700-getStringLenth(g, "GamePause")/2,200);
         g.setColor(Color.black);
+        g.setFont(g.getFont().deriveFont(30F));
         g.drawString("Continue",700-getStringLenth(g, "Continue")/2,300);
         g.drawString("Restart",700-getStringLenth(g, "Restart")/2,400);
         g.drawString("Map Seclection",700-getStringLenth(g, "Map Selection")/2,500);
         g.drawString("Quit", 700-getStringLenth(g, "Quit")/2, 600);
         g.drawString("=>",400,(choice+2)*100);
-        
+        g.setStroke(new BasicStroke(5));
+        g.drawRect(350 , 100 , 700, 600);
     }
 
     @Override

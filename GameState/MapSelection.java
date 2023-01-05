@@ -2,32 +2,30 @@ package GameState;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.util.Vector;
-
 import Map.Map;
-
 import java.awt.BasicStroke;
 import Sources.GamePanel;
 import Sources.Tool.KeyHandler;
+import java.awt.image.*;
+
+import javax.imageio.ImageIO;
 
 public class MapSelection extends GameState {
     private int choice;
-    private Vector<Map> vectormap;
     private int counter;
+    private BufferedImage background;
     public MapSelection(GamePanel gamepanel) {
         super(gamepanel);
         this.choice = 1;
         this.counter = 0;
-        vectormap = new Vector<Map>();
-        setUp();
+        try {
+            this.background = ImageIO.read(getClass().getResourceAsStream("/Image/background.png"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
-    public void setUp(){
-        for(int i = 0; i <= 8; i++){
-            Map inputmap = new Map("/Map/map0"+(i+1)+".txt",i%3,i/3);
-            this.vectormap.add(inputmap);
-        }
-    }
     @Override
     public void input(KeyHandler keyHandler) {
         if(keyHandler.getkeypresses()[(int) 'S']){
@@ -80,7 +78,7 @@ public class MapSelection extends GameState {
         }
         else if(keyHandler.getkeypresses()[10]){
             this.getGamepanel().getGamestatemanager().popState();
-            this.getGamepanel().getGamestatemanager().addState( new PlayState(this.getGamepanel(),this.vectormap.elementAt(choice-1)));
+            this.getGamepanel().getGamestatemanager().addState( new PlayState(this.getGamepanel(),this.getGamepanel().getMapManager().getVectormap().elementAt(choice-1)));
         }
         else{
             this.counter = 0;
@@ -95,17 +93,18 @@ public class MapSelection extends GameState {
 
     @Override
     public void render(Graphics2D g) {
+        g.drawImage(this.background,0,0,null);
         g.setFont(GameStateManager.font_bong);
-        g.setColor(new Color(102,0,204,255));
+        g.setColor(new Color(234,53,70,255));
         g.setFont(g.getFont().deriveFont(20F));
-        for(Map input: this.vectormap){
+        for(Map input: this.getGamepanel().getMapManager().getVectormap()){
             g.setStroke(new BasicStroke(1));
             g.drawString("Map"+"0"+(input.getX()+input.getY()+1),input.getX()*450+200,input.getY()*250+230);
             g.drawRect(input.getX()*450+30, input.getY()*250, 400, 200);
+            g.drawImage(input.getMinimap(), input.getX()*450+30, input.getY()*250, 400,200,null);
             g.setStroke(new BasicStroke(5));
             g.drawRect(((this.choice-1)%3)*450+30, ((this.choice-1)/3)*250, 400, 200);
         }
-        
     }
 
     @Override
@@ -114,5 +113,4 @@ public class MapSelection extends GameState {
         
         
     }
-    
 }

@@ -5,6 +5,7 @@ import java.awt.*;
 import javax.swing.JPanel;
 
 import GameState.GameStateManager;
+import Map.MapManager;
 import Sources.Tool.KeyHandler;
 
 public class GamePanel extends JPanel implements Runnable {
@@ -19,6 +20,9 @@ public class GamePanel extends JPanel implements Runnable {
     private Thread gamethread;
     private KeyHandler keyhandler;
     private GameStateManager gamestatemanager;
+    private MapManager MapManager;
+
+
 
 
 
@@ -36,6 +40,7 @@ public class GamePanel extends JPanel implements Runnable {
         this.setFocusable(true);
         this.addKeyListener(this.keyhandler);
         this.gamestatemanager = new GameStateManager(this);
+        this.MapManager = new MapManager();
         gamethread = new Thread(this);
         this.gamethread.start();
     }
@@ -80,6 +85,18 @@ public class GamePanel extends JPanel implements Runnable {
     public void setGamestatemanager(GameStateManager gamestatemanager) {
         this.gamestatemanager = gamestatemanager;
     }
+    public MapManager getMapManager() {
+        return MapManager;
+    }
 
+    public void setMapManager(MapManager mapManager) {
+        MapManager = mapManager;
+    }
+    public Thread getGamethread() {
+        return gamethread;
+    }
+    public void setGamethread(Thread gamethread) {
+        this.gamethread = gamethread;
+    }
 }
     
