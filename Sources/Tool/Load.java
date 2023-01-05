@@ -69,7 +69,6 @@ public class Load {
                             else{
                                 kind--;
                             }
-
                             if(96<kind&&kind<101||83<kind&&kind<88){
                                 Wall thing = new Wall(v);
                                 thing.setKind(kind);

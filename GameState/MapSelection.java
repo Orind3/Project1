@@ -95,11 +95,11 @@ public class MapSelection extends GameState {
     public void render(Graphics2D g) {
         g.drawImage(this.background,0,0,null);
         g.setFont(GameStateManager.font_bong);
-        g.setColor(new Color(234,53,70,255));
+        g.setColor(Color.black);
         g.setFont(g.getFont().deriveFont(20F));
         for(Map input: this.getGamepanel().getMapManager().getVectormap()){
             g.setStroke(new BasicStroke(1));
-            g.drawString("Map"+"0"+(input.getX()+input.getY()+1),input.getX()*450+200,input.getY()*250+230);
+            g.drawString("Map"+"0"+(input.getX()+input.getY()*3+1),input.getX()*450+200,input.getY()*250+230);
             g.drawRect(input.getX()*450+30, input.getY()*250, 400, 200);
             g.drawImage(input.getMinimap(), input.getX()*450+30, input.getY()*250, 400,200,null);
             g.setStroke(new BasicStroke(5));

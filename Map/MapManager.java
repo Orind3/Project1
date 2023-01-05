@@ -13,7 +13,7 @@ public class MapManager {
 
     public void setUp(){
         for(int i = 0; i <= 8; i++){
-            Map inputmap = new Map("/Map/map0"+(i+1)+".txt",i%3,i/3);
+            Map inputmap = new Map("/Map/map0"+(i+1)+".txt",i%3,i/3,i+1);
             inputmap.setNomap(i+1);
             this.vectormap.add(inputmap);
         }

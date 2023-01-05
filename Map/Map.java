@@ -19,12 +19,13 @@ public class Map {
     public void setSource(String source) {
         this.source = source;
     }
-    public Map(String name,int x,int y){
+    public Map(String name,int x,int y,int nomap){
         this.source = name;
         this.x = x;
         this.y = y;
+        this.nomap = nomap;
         try {
-            this.minimap = ImageIO.read(getClass().getResourceAsStream("/Image/map0"+1+".png"));
+            this.minimap = ImageIO.read(getClass().getResourceAsStream("/Image/map0"+this.nomap+".png"));
         } catch (Exception e) {
             e.printStackTrace();
         }
