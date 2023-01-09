@@ -7,6 +7,7 @@ class Main{
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(true);
         window.setTitle("Sokoban");
+        window.setUndecorated(true);
         GamePanel gamepanel = new GamePanel();
         window.add(gamepanel);
         window.pack();

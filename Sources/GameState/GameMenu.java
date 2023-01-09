@@ -8,6 +8,7 @@ import Sources.Tool.KeyHandler;
 
 public class GameMenu extends GameState {
     public BufferedImage background;
+    public BufferedImage playerFace;
     private int choice;
     private int counter;
     public GameMenu(GamePanel gamepanel) {
@@ -16,6 +17,7 @@ public class GameMenu extends GameState {
         this.counter = 0;
         try {
             this.background = ImageIO.read(getClass().getResourceAsStream("/Image/background.png"));
+            this.playerFace = ImageIO.read(getClass().getResourceAsStream("/Image/playerFace.png")); 
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -99,15 +101,18 @@ public class GameMenu extends GameState {
     //ScreenWidth = 1400;
     public void render(Graphics2D g) {
         g.drawImage(this.background,0,0,null);
+        g.drawImage(this.playerFace, 650, 100,null);
         g.setFont(GameStateManager.font_bong);
-        g.setColor(new Color(102,0,204,255));
+        g.setColor(new Color(40,177,98,255));
         g.setFont(g.getFont().deriveFont(80F));
-        g.drawString("Push'n Push",700-getStringLenth(g, "Push'n Push")/2,200);
+        g.drawString("Push'n Push",700-getStringLenth(g, "Push'n Push")/2,300);
+        g.setColor(new Color(105,76,57,255));
         g.setFont(g.getFont().deriveFont(40F));
-        g.drawString("New Game",700-getStringLenth(g, "New Game")/2,300);
-        g.drawString("Continue",700-getStringLenth(g, "Continue")/2,400);
-        g.drawString("Exit",700-getStringLenth(g, "Exit")/2,500);
-        g.drawString("=>",300,(choice+2)*100);
+        g.drawString("New Game",700-getStringLenth(g, "New Game")/2,400);
+        g.drawString("Continue",700-getStringLenth(g, "Continue")/2,500);
+        g.drawString("Exit",700-getStringLenth(g, "Exit")/2,600);
+        g.setColor(new Color(192,160,124,255));
+        g.drawString("=>",300,(choice+3)*100);
     }
     public int getStringLenth(Graphics2D g, String input){
         int txtLength = (int) g.getFontMetrics().getStringBounds(input, g).getWidth();

@@ -7,13 +7,18 @@ public class Crystal extends Entity {
     public Crystal(Vector<Integer> position) {
         super(position);
         this.setGothrough(true);
-        this.setshape(new Rectangle(position.elementAt(0),position.elementAt(1),10,10));
+        this.setshape(new Rectangle(position.elementAt(0),position.elementAt(1),64,64));
     }
     
     public boolean hit(Vector<Entity> entity){
         for(Entity check: entity){
             if(check instanceof Box){
-                if(check.getshape().intersects(this.getshape())){
+                Rectangle rect = check.getshape().intersection(this.getshape());
+                if(rect.getWidth()<0){
+                    continue;
+                }
+                int area =(int) (rect.getWidth()*rect.getHeight());
+                if(area>=3600){
                     return true;
                 }
             }

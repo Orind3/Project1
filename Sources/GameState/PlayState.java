@@ -81,9 +81,9 @@ public class PlayState extends GameState{
         for(Entity entity: this.crystals){
             ((Crystal) entity).pullTheBox(entities);
         }
-        // if(checkWinning()){
-        //     this.getGamepanel().getGamestatemanager().addState(new WinningState(this.getGamepanel()));
-        // }
+        if(checkWinning()){
+            this.getGamepanel().getGamestatemanager().addState(new WinningState(this.getGamepanel()));
+        }
     }
     public Map getMap() {
         return map;
