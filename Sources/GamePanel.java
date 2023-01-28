@@ -44,7 +44,6 @@ public class GamePanel extends JPanel implements Runnable {
         this.MapManager = new MapManager();
         this.gameDataStore = new GameDataStore();
         this.saveandload = new SaveAndLoad(this);
-        this.saveandload.load();
         gamethread = new Thread(this);
         this.gamethread.start();
     }

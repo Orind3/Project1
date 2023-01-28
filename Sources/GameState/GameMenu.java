@@ -66,7 +66,8 @@ public class GameMenu extends GameState {
                 }
                 if(this.choice==2){
                     this.getGamepanel().getGamestatemanager().popState();
-                    this.getGamepanel().getGamestatemanager().addState( new MapSelection(this.getGamepanel()));
+                    this.getGamepanel().getSaveandload().load();
+                    this.getGamepanel().getGamestatemanager().addState(new MapSelection(this.getGamepanel()));
                 }
                 if(this.choice==3){
                     this.getGamepanel().setGamethread(null);
