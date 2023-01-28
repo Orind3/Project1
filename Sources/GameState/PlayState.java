@@ -82,6 +82,13 @@ public class PlayState extends GameState{
             ((Crystal) entity).pullTheBox(entities);
         }
         if(checkWinning()){
+            int i = this.getGamepanel().getGameDataStore().getMapunlock();
+            int currenmap = this.getGamepanel().getMapManager().getCurrentMapint();
+            if(currenmap < 9){
+                currenmap++;
+            }
+            this.getGamepanel().getGameDataStore().setMapunlock(Math.max(i,currenmap));
+            this.getGamepanel().getSaveandload().save();
             this.getGamepanel().getGamestatemanager().addState(new WinningState(this.getGamepanel()));
         }
     }

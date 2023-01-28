@@ -82,7 +82,7 @@ public class Load {
                             else if(kind==52){
                                 this.PlayerPosition = v;
                             }
-                            else if(kind==38||kind==51||kind==64||kind==77){
+                            else if(kind==25||kind==38||kind==51||kind==64||kind==77){
                                 Crystal thing = new Crystal(v);
                                 thing.setKind(kind);
                                 entities.add(thing);

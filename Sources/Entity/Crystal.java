@@ -13,13 +13,15 @@ public class Crystal extends Entity {
     public boolean hit(Vector<Entity> entity){
         for(Entity check: entity){
             if(check instanceof Box){
-                Rectangle rect = check.getshape().intersection(this.getshape());
-                if(rect.getWidth()<0){
-                    continue;
-                }
-                int area =(int) (rect.getWidth()*rect.getHeight());
-                if(area>=3600){
-                    return true;
+                if(check.getshape().intersects(this.getshape())){
+                    Rectangle rect = check.getshape().intersection(this.getshape());
+                    if(rect.getWidth()<=0||rect.getHeight()<=0){
+                        continue;
+                    }
+                    int area =(int) (rect.getWidth()*rect.getHeight());
+                    if(area>=3600){
+                        return true;
+                    }
                 }
             }
         }

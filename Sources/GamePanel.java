@@ -21,7 +21,8 @@ public class GamePanel extends JPanel implements Runnable {
     private KeyHandler keyhandler;
     private GameStateManager gamestatemanager;
     private MapManager MapManager;
-
+    private GameDataStore gameDataStore;
+    private SaveAndLoad saveandload;
 
 
 
@@ -41,6 +42,9 @@ public class GamePanel extends JPanel implements Runnable {
         this.addKeyListener(this.keyhandler);
         this.gamestatemanager = new GameStateManager(this);
         this.MapManager = new MapManager();
+        this.gameDataStore = new GameDataStore();
+        this.saveandload = new SaveAndLoad(this);
+        this.saveandload.load();
         gamethread = new Thread(this);
         this.gamethread.start();
     }
@@ -62,7 +66,6 @@ public class GamePanel extends JPanel implements Runnable {
                 delta = 0;
             }
         }
-        
     }
     public void update(){
         this.gamestatemanager.update();
@@ -97,6 +100,20 @@ public class GamePanel extends JPanel implements Runnable {
     }
     public void setGamethread(Thread gamethread) {
         this.gamethread = gamethread;
+    }
+    
+    public GameDataStore getGameDataStore() {
+        return gameDataStore;
+    }
+    public void setGameDataStore(GameDataStore gameDataStore) {
+        this.gameDataStore = gameDataStore;
+    }
+    public SaveAndLoad getSaveandload() {
+        return saveandload;
+    }
+
+    public void setSaveandload(SaveAndLoad saveandload) {
+        this.saveandload = saveandload;
     }
 }
     

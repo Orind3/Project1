@@ -24,6 +24,7 @@ public class Map {
         this.x = x;
         this.y = y;
         this.nomap = nomap;
+        this.done = false;
         try {
             this.minimap = ImageIO.read(getClass().getResourceAsStream("/Image/map0"+this.nomap+".png"));
         } catch (Exception e) {

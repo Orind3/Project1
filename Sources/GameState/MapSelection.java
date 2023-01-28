@@ -11,12 +11,17 @@ import java.awt.image.*;
 import javax.imageio.ImageIO;
 
 public class MapSelection extends GameState {
+    private int unlockmap;
     private int choice;
     private int counter;
     private BufferedImage background;
     public MapSelection(GamePanel gamepanel) {
         super(gamepanel);
         this.choice = 1;
+        this.unlockmap = this.getGamepanel().getGameDataStore().getMapunlock();
+        for(int i = 0; i < unlockmap; i++){
+            this.getGamepanel().getMapManager().getVectormap().elementAt(i).setDone(true);
+        }
         this.counter = 0;
         try {
             this.background = ImageIO.read(getClass().getResourceAsStream("/Image/background.png"));
@@ -31,12 +36,14 @@ public class MapSelection extends GameState {
         if(keyHandler.getkeypresses()[(int) 'S']){
             counter++;
             if(counter<2){
-                choice+=3;
+                if(choice+3<=unlockmap)
+                    choice+=3;
             }
             else{
                 if(counter>30){
                     if(counter%10==0)
-                    choice+=3;
+                    if(choice+3<=unlockmap)
+                        choice+=3;
                 }
             }
         }
@@ -55,11 +62,13 @@ public class MapSelection extends GameState {
         else if(keyHandler.getkeypresses()[(int) 'D']){
             counter++;
             if(counter<2){
+                if(choice+1<=unlockmap)
                 choice++;
             }
             else{
                 if(counter>30){
                     if(counter%10==0)
+                    if(choice+1<=unlockmap)
                     choice+=1;
                 }
             }
@@ -77,6 +86,7 @@ public class MapSelection extends GameState {
             }
         }
         else if(keyHandler.getkeypresses()[10]){
+            this.getGamepanel().getMapManager().setCurrentMap(choice);
             this.getGamepanel().getGamestatemanager().popState();
             this.getGamepanel().getGamestatemanager().addState( new PlayState(this.getGamepanel(),this.getGamepanel().getMapManager().getVectormap().elementAt(choice-1)));
         }
@@ -97,11 +107,11 @@ public class MapSelection extends GameState {
         else{
             this.counter = 0;
         }
-        if(this.choice>9){
-            this.choice=1;
+        if(this.choice>unlockmap){
+            this.choice=unlockmap;
         }
         if(this.choice<1){
-            this.choice=9;
+            this.choice=1;
         }
     }
 
@@ -112,10 +122,15 @@ public class MapSelection extends GameState {
         g.setColor(new Color(105,76,57,255));
         g.setFont(g.getFont().deriveFont(20F));
         for(Map input: this.getGamepanel().getMapManager().getVectormap()){
+            g.setColor(new Color(105,76,57,255));
             g.setStroke(new BasicStroke(1));
             g.drawString("Map"+"0"+(input.getX()+input.getY()*3+1),input.getX()*450+200,input.getY()*250+250);
             g.drawRect(input.getX()*450+30, input.getY()*250+20, 400, 200);
             g.drawImage(input.getMinimap(), input.getX()*450+30, input.getY()*250+20, 400,200,null);
+            if(!input.isDone()){
+                g.setColor(Color.black);
+                g.drawString("Locked",input.getX()*450+200,input.getY()*250+130);
+            }
             g.setStroke(new BasicStroke(10));
             g.drawRect(((this.choice-1)%3)*450+30, ((this.choice-1)/3)*250+20, 400, 200);
             g.setColor(new Color(105,76,57,25));

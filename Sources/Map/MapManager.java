@@ -21,6 +21,9 @@ public class MapManager {
     public Map getCurrentMap() {
         return this.vectormap.elementAt(currentMap);
     }
+    public int getCurrentMapint() {
+        return this.currentMap;
+    }
 
     public void setCurrentMap(int currentMap) {
         this.currentMap = currentMap;
