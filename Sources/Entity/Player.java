@@ -4,8 +4,13 @@ import java.util.Vector;
 public class Player extends Entity {
     private int speed;
     private int direction;
+    private boolean running;
+    
+
+
     public Player(Vector<Integer> position) {
         super(position);
+        this.running = false;
         this.speed = 4;
         this.direction = 0;
         this.setGothrough(false);
@@ -112,4 +117,13 @@ public class Player extends Entity {
     public void setSpeed(int speed) {
         this.speed = speed;
     }
+    public boolean isRunning() {
+        return running;
+    }
+
+
+    public void setRunning(boolean running) {
+        this.running = running;
+    }
+
 }

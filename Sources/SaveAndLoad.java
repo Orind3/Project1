@@ -7,7 +7,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public class SaveAndLoad {
-    GamePanel gamepanel;
+    protected GamePanel gamepanel;
     public SaveAndLoad(GamePanel gamepanel){
         this.gamepanel = gamepanel;
     }

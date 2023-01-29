@@ -12,10 +12,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Vector;
 public class Load {
-    String path;
-    Vector<Entity> entities;
-    Vector<Entity> crystals;
-    Vector<Integer> PlayerPosition;
+    protected String path;
+    protected Vector<Entity> entities;
+    protected Vector<Entity> crystals;
+    protected Vector<Integer> PlayerPosition;
 
     public Load(String path){
         this.path = path;

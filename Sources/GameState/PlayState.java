@@ -20,10 +20,12 @@ public class PlayState extends GameState{
     private PlayerRender playerRender;
     private Vector<Entity> entities;
     private Vector<Entity> crystals;
+    private boolean music;
     public PlayState(GamePanel gamepanel,Map map) {
         super(gamepanel);
         counter = 0;
         this.map = map;
+        this.music = false;
         this.player = new Player(this.map.getLoadAndLoadMap().getPlayerPosition());
         this.playerRender = new PlayerRender(this);
         this.entities = new Vector<>();
@@ -50,24 +52,28 @@ public class PlayState extends GameState{
             }
             if(!this.player.hit(this.entities)){
                 this.player.move();
+                player.setRunning(true);
             }
         }
-            if(keyHandler.getkeypresses()[KeyEvent.VK_ESCAPE]){
-                keyHandler.getkeypresses()[KeyEvent.VK_ESCAPE] = false;
-                counter++;
-                if(counter<2){
-                    this.getGamepanel().getGamestatemanager().addState(new GamePause(this.getGamepanel()));
-                }
-                else{
-                    if(counter>30){
-                        if(counter%10==0)
-                        this.getGamepanel().getGamestatemanager().addState(new GamePause(this.getGamepanel()));
-                    }
-                }
+        else{
+            player.setRunning(false);
+    }
+        if(keyHandler.getkeypresses()[KeyEvent.VK_ESCAPE]){
+            keyHandler.getkeypresses()[KeyEvent.VK_ESCAPE] = false;
+            counter++;
+            if(counter<2){
+                this.getGamepanel().getGamestatemanager().addState(new GamePause(this.getGamepanel()));
             }
             else{
-                counter = 0;
+                if(counter>30){
+                    if(counter%10==0)
+                    this.getGamepanel().getGamestatemanager().addState(new GamePause(this.getGamepanel()));
+                }
             }
+        }
+        else{
+            counter = 0;
+        }
     }
 
     @Override
@@ -79,9 +85,15 @@ public class PlayState extends GameState{
     @Override
     public void update() {
         for(Entity entity: this.crystals){
-            ((Crystal) entity).pullTheBox(entities);
+            if(((Crystal) entity).pullTheBox(entities)){
+                this.getGamepanel().playSound1(2);
+            }
         }
         if(checkWinning()){
+            if(music){
+                this.getGamepanel().stopSoundEffect();
+                this.music = false;
+            }
             int i = this.getGamepanel().getGameDataStore().getMapunlock();
             int currenmap = this.getGamepanel().getMapManager().getCurrentMapint();
             if(currenmap < 9){
@@ -90,6 +102,19 @@ public class PlayState extends GameState{
             this.getGamepanel().getGameDataStore().setMapunlock(Math.max(i,currenmap));
             this.getGamepanel().getSaveandload().save();
             this.getGamepanel().getGamestatemanager().addState(new WinningState(this.getGamepanel()));
+        }
+        else{
+            if(player.isRunning()){
+                if(!music)
+                    this.getGamepanel().playSoundEffect(1);
+                    this.music = true;
+            }
+            else{
+                if(music){
+                    this.getGamepanel().stopSoundEffect();
+                    this.music = false;
+                }
+            }
         }
     }
     public Map getMap() {

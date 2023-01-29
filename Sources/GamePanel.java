@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.*;
 import javax.swing.JPanel;
 
+import Sound.Sound;
 import Sources.GameState.GameStateManager;
 import Sources.Map.MapManager;
 import Sources.Tool.KeyHandler;
@@ -23,6 +24,9 @@ public class GamePanel extends JPanel implements Runnable {
     private MapManager MapManager;
     private GameDataStore gameDataStore;
     private SaveAndLoad saveandload;
+    private Sound sound;
+    private Sound sound1;
+
 
 
 
@@ -45,8 +49,11 @@ public class GamePanel extends JPanel implements Runnable {
         this.gameDataStore = new GameDataStore();
         this.saveandload = new SaveAndLoad(this);
         this.saveandload.load();
+        this.sound = new Sound();
+        this.sound1 = new Sound();
         gamethread = new Thread(this);
         this.gamethread.start();
+        this.playSoundEffect(0);
     }
 
     @Override
@@ -114,6 +121,38 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void setSaveandload(SaveAndLoad saveandload) {
         this.saveandload = saveandload;
+    }
+    public void playSoundEffect(int i){
+        this.sound.setFile(i);
+        this.sound.play();
+        this.sound.loop();
+    }
+    public void stopSoundEffect(){
+        this.sound.stop();
+    }
+    public void stopSoundEffect(int i){
+        this.sound.setFile(i);
+        this.sound.stop();
+    }
+    public void playSound(int i){
+        this.sound.setFile(i);
+        this.sound.play();
+    }
+    public void playSoundEffect1(int i){
+        this.sound1.setFile(i);
+        this.sound1.play();
+        this.sound1.loop();
+    }
+    public void stopSoundEffect1(){
+        this.sound1.stop();
+    }
+    public void stopSoundEffect1(int i){
+        this.sound1.setFile(i);
+        this.sound1.stop();
+    }
+    public void playSound1(int i){
+        this.sound1.setFile(i);
+        this.sound1.play();
     }
 }
     

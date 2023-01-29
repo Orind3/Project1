@@ -4,8 +4,8 @@ import java.util.Vector;
 import Sources.Entity.Entity;
 
 public class LoadMap {
-    Load load;
-    Vector<Entity> maplayer;
+    protected Load load;
+    protected Vector<Entity> maplayer;
     
     public LoadMap(String path){
         this.load = new Load(path);

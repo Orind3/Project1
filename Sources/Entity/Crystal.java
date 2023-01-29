@@ -4,8 +4,10 @@ import java.awt.Rectangle;
 import java.util.Vector;
 
 public class Crystal extends Entity {
+    private boolean pulled;
     public Crystal(Vector<Integer> position) {
         super(position);
+        this.pulled = false;
         this.setGothrough(true);
         this.setshape(new Rectangle(position.elementAt(0),position.elementAt(1),64,64));
     }
@@ -28,7 +30,8 @@ public class Crystal extends Entity {
         return false;
     }
     
-    public void pullTheBox(Vector<Entity> entity){
+    public boolean pullTheBox(Vector<Entity> entity){
+        this.pulled = false;
         for(int i = 0; i < entity.size(); i++){
             Entity check = entity.get(i);
             if(check instanceof Box){
@@ -39,6 +42,7 @@ public class Crystal extends Entity {
                         check.setPosition(check.getPosition().elementAt(0)+pullx,check.getPosition().elementAt(1)+pully);
                         check.updatePosition();
                         ((Box) check).setIsPulled(true);
+                        this.pulled = true;
                     }
                 }
                 else if(Math.abs(pullx)<=16&Math.abs(pully)<=16){
@@ -46,5 +50,6 @@ public class Crystal extends Entity {
                 }
             }
         }
+        return this.pulled;
     }
 }

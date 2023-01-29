@@ -10,10 +10,9 @@ import java.awt.Graphics2D;
 
 
 public class MapRender extends Render {
-    Load loadimage;
-    BufferedImage a;
-    BufferedImage tile[][];
-    Vector<Entity> layer;
+    protected Load loadimage;
+    protected BufferedImage tile[][];
+    protected Vector<Entity> layer;
     public MapRender(PlayState playstate) {
         super(playstate);
         this.layer = this.getPlayState().getMap().getLoadMap().getMaplayer();

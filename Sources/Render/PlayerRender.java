@@ -7,8 +7,8 @@ import Sources.GameState.PlayState;
 import Sources.Tool.Load;
 
 public class PlayerRender extends Render {
-    Vector<Vector<BufferedImage>> playeractionimages;
-    Load loadimage;
+    protected Vector<Vector<BufferedImage>> playeractionimages;
+    protected Load loadimage;
     private int actionstate;
     public PlayerRender(PlayState playstate) {
         super(playstate);

@@ -7,8 +7,8 @@ import java.awt.*;
 
 
 public class GameStateManager {
-    Vector<GameState> states;
-    GamePanel gamepanel;
+    public Vector<GameState> states;
+    public  GamePanel gamepanel;
     public static Font font_rainyHeart;
     public static Font font_bong;
     public GameStateManager(GamePanel gamepanel) {
