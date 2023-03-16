@@ -62,6 +62,8 @@ public class GameMenu extends GameState {
             if(counter<2){
                 if(this.choice==1){
                     this.getGamepanel().getGamestatemanager().popState();
+                    this.getGamepanel().getGameDataStore().setMapunlock(1);
+                    this.getGamepanel().getSaveandload().save();
                     this.getGamepanel().getGamestatemanager().addState( new MapSelection(this.getGamepanel()));
                 }
                 if(this.choice==2){
@@ -78,6 +80,8 @@ public class GameMenu extends GameState {
                     if(counter%10==0)
                     if(this.choice==1){
                         this.getGamepanel().getGamestatemanager().popState();
+                        this.getGamepanel().getGameDataStore().setMapunlock(1);
+                        this.getGamepanel().getSaveandload().save();
                         this.getGamepanel().getGamestatemanager().addState( new MapSelection(this.getGamepanel()));
                     }
                     if(this.choice==2){

@@ -1,6 +1,5 @@
 package Sources;
 import javax.swing.JFrame;
-
 class Main{
     public static void main(String[] args) {
         JFrame window = new JFrame();
